@@ -1,2 +1,13 @@
-# Numerical_Methods_Master_Projects
-Numerical projects using Fortran and Python: interpolation/extrapolation of molecular potentials (O₂, C₂H₅), integration and differentiation (average value, VO₂(R)), and model fitting of a spectroscopic Hamiltonian.
+# 📚 **Numerical Methods – Master Projects**
+
+### 1st Project: Interpolation/Extrapolation (Fortran)  
+- Exercise 1: Potential of O₂  
+- Exercise 2: Potential of the C₂H₅ radical  
+
+### 2nd Project: Integration – Differentiation (Fortran)  
+- Exercise 1: Average Value  
+- Exercise 2: Numerical Derivatives of VO₂(R)  
+- Exercise 3: Integration  
+
+### 3rd Project: Model Fitting (Python)  
+- Exercise 1: Study of a Spectroscopic Hamiltonian

@@ -11,3 +11,9 @@
 
 ### 3rd Project: Model Fitting (Python)  
 - Exercise 1: Study of a Spectroscopic Hamiltonian
+
+# *1st Project: Interpolation/Extrapolation (Fortran)*
+
+# *2nd Project: Integration – Differentiation (Fortran)*
+
+# *3rd Project: Model Fitting (Python)*

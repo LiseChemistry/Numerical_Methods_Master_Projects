@@ -35,17 +35,17 @@ V(R) = -D \left\{1 + c_1(R - R^*) + c_2(R - R^*)^2 + c_3(R - R^*)^3 \right\} e^{
 ```
 
 Where:
-```math
-- \( D = 3.8886 \, \text{eV} \)
-- \( R^* = 2.2818 \, a_0 \)
-- \( \alpha = 3.3522498 \, a_0^{-1} \)
-- \( c_1 = 3.6445906 \, a_0^{-1} \)
-- \( c_2 = 3.9281238 \, a_0^{-2} \)
-- \( c_3 = 2.0986689 \, a_0^{-3} \)
-```
+
+D = 3.8886 eV  
+R* = 2.2818 a₀
+α = 3.3522498 a₀⁻¹  
+c₁ = 3.6445906 a₀⁻¹  
+c₂ = 3.9281238 a₀⁻²  
+c₃ = 2.0986689 a₀⁻³
+
 This is a model adjusted to experimental spectroscopic data.
 
-We want to interpolate the potential over the interval \([1.8, 7]\, a_0\) using these points:
+We want to interpolate the potential over the interval [1.8, 7]a₀ using these points:
 
 ```math
 \{ R_q \} = \{1.8, 2.1, 2.4, 2.8, 3.3, 4.0, 5.0, 7.0\}
@@ -76,8 +76,8 @@ V(\phi) = e^{-\alpha \cos(6\phi)}, \quad \alpha = 0.2
 This potential has the same symmetry properties as the exact one.
 
 ##### Tasks:
-1. Build an interpolation scheme \( \bar{V}(\phi) \) using `Minv.f`.
-2. Determine the minimum number of interpolation points \( \{ \phi_q \} \) such that the standard deviation:
+1. Build an interpolation scheme V̄(φ) using `Minv.f`.
+2. Determine the minimum number of interpolation points {φ_q} such that the standard deviation:
 
 ```math
 \phi_{q+\frac{1}{2}} = \frac{1}{2}(\phi_{q+1} + \phi_q)
@@ -142,13 +142,13 @@ A(t) = A_0 \sin(\omega t) e^{-\alpha(t - T)^2}
 ```
 
 Where:
-```math
-- \( \omega = 2 \)  
-- \( T = 5\pi \)  
-- \( \alpha = 0.05 \)
-```
+
+- ω = 2  
+- T = 5π  
+- α = 0.05
+
 ##### Tasks:
-1. Compute the **fluence** \( \Phi \):
+1. Compute the **fluence** Φ:
 
 ```math
 \Phi = \int_0^{2T} A^2(t) dt
@@ -158,11 +158,11 @@ Where:
 - Trapezoidal method
 - Simpson's rule
 
-Increase the number of integration points until the **relative convergence** reaches \( 10^{-8} \).
+Increase the number of integration points until the **relative convergence** reaches 10⁻⁸.
 
 ---
 
-### 3rd Project: Model Fitting (Python)
+### Project III: Model Fitting (Python)
 
 #### Exercise 1: Study of a Spectroscopic Hamiltonian
 
@@ -175,14 +175,14 @@ E_{\text{sp}}(n) = T_0 + \sum_{\alpha=1}^{6} \omega_\alpha \left(n_\alpha + \fra
 You are given a dataset `HFCO_exp.dat` with the first 150 vibrational levels of the HFCO molecule.
 
 ##### Tasks:
-1. Fit only the \( \omega_\alpha \) and \( x_{\alpha\beta} \) terms first using:
+1. Fit only the ωₐ and xₐᵦ terms first using:
 
 ```python
 numpy.linalg.inv
 ```
 
-2. Then include the \( y_{\alpha\beta\gamma} \) terms.
-⚠️ If a configuration like (n1 = 1, n2 = 1, n3 = 1, n4 = n5 = n6 = 0) does not appear in the dataset, the coefficient \( y_{123} \) cannot be determined.
+2. Then include the yᵅᵦᵧ terms.
+⚠️ If a configuration like n1 = 1, n2 = 1, n3 = 1, n4 = n5 = n6 = 0 does not appear in the dataset, the coefficient y₁₂₃ cannot be determined.
 
 3. Test with **Singular Value Decomposition**:
 

@@ -192,4 +192,4 @@ numpy.linalg.svd
 
 ##### Print:
 - The fitted parameters
-- The residuals E_exp(n) - E_sp(n)) for all levels
+- The residuals $E_{\text{exp}}(n) - E_{\text{sp}}(n)$ for all levels

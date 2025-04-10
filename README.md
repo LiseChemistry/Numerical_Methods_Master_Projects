@@ -26,7 +26,7 @@ This repository contains numerical methods projects completed during my Master�
 
 ### Project I: Interpolation/Extrapolation (Fortran)  
 
-#### Exercise 1: Potential of O₂ 
+#### 📌Exercise 1: Potential of O₂ 
 
 We consider the internuclear potential of the O₂ molecule:
 
@@ -50,7 +50,7 @@ We want to interpolate the potential over the interval [1.8, 7]a₀ using these 
 ```math
 \{ R_q \} = \{1.8, 2.1, 2.4, 2.8, 3.3, 4.0, 5.0, 7.0\}
 ```
-##### Interpolation Methods:
+##### 🧩Interpolation Methods:
 - Lagrange Polynomial ( L(R) )
 - Polynomial in powers of ( 1/R )
 - Rational Polynomial (`RatInt.f`)
@@ -65,7 +65,7 @@ on a **logarithmic scale** for R in [1.8, 10], and compare the behavior of the i
 
 ---
  
-#### Exercise 2: Potential of the C₂H₅ Radical
+#### 📌Exercise 2: Potential of the C₂H₅ Radical
 
 We use the model potential:
 
@@ -75,7 +75,7 @@ V(\phi) = e^{-\alpha \cos(6\phi)}, \quad \alpha = 0.2
 
 This potential has the same symmetry properties as the exact one.
 
-##### Tasks:
+##### 🔧Tasks:
 - Build an interpolation scheme V̄(φ) using `Minv.f`.
 - Determine the minimum number of interpolation points {φ_q} such that the standard deviation:
 
@@ -91,7 +91,7 @@ This potential has the same symmetry properties as the exact one.
 
 ### Project II: Integration – Differentiation (Fortran)
   
-#### Exercise 1: Average Value
+#### 📌Exercise 1: Average Value
 
 We want to compute the average distance of the electron to the nucleus in the hydrogen atom’s 3s orbital:
 
@@ -105,7 +105,7 @@ With:
 \phi_{3s}(\vec{r}) = \frac{1}{\sqrt{4\pi}} \cdot \frac{2}{81\sqrt{3}} \left(\frac{Z}{a_0}\right)^{3/2} (27 - 18\rho + 2\rho^2) e^{-\rho/3}, \quad \rho = \frac{Zr}{a_0}
 ```
 
-##### Methods:
+##### 🧩Methods:
 - Gauss-Laguerre Quadrature (`Laguerre_Quad.c`)  
 - Monte Carlo Method (with same RNG seed)  
 - (Optional) Monte Carlo with Importance Sampling
@@ -117,7 +117,7 @@ Compare with the analytical value:
 ```
 ---
 
-#### Exercise 2: Numerical Derivatives of the VO₂ Potential
+#### 📌Exercise 2: Numerical Derivatives of the VO₂ Potential
 
 Reuse the O₂ potential from Project I and compute its first and second derivatives at:
 
@@ -133,7 +133,7 @@ Compare with the analytical derivatives.
 
 ---
 
-#### Exercise 3: Laser Pulse Integration
+#### 📌Exercise 3: Laser Pulse Integration
 
 Consider a laser pulse defined by the function:
 
@@ -147,14 +147,14 @@ Where:
 - T = 5π  
 - α = 0.05
 
-##### Tasks:
+##### 🔧Tasks:
 - Compute the **fluence** Φ:
 
 ```math
 \Phi = \int_0^{2T} A^2(t) dt
 ```
 
-##### Using:
+##### 🔧Using:
 - Trapezoidal method
 - Simpson's rule
 
@@ -164,25 +164,24 @@ Increase the number of integration points until the **relative convergence** rea
 
 ### Project III: Model Fitting (Python)
 
-#### Exercise 1: Study of a Spectroscopic Hamiltonian
+#### 📌Exercise 1: Study of a Spectroscopic Hamiltonian
 
 We consider the vibrational spectroscopic Hamiltonian:
 
 ```math
 E_{\text{sp}}(n) = T_0 + \sum_{\alpha=1}^{6} \omega_\alpha \left(n_\alpha + \frac{1}{2} \right) + \sum_{\alpha \leq \beta} x_{\alpha\beta} \left(n_\alpha + \frac{1}{2} \right)\left(n_\beta + \frac{1}{2} \right) + \sum_{\alpha \leq \beta \leq \gamma} y_{\alpha\beta\gamma} \left(n_\alpha + \frac{1}{2} \right)\left(n_\beta + \frac{1}{2} \right)\left(n_\gamma + \frac{1}{2} \right)
 ```
+Adjust the parameters **T₀**, {**ω<sub>α</sub>**}, {**x<sub>αβ</sub>**}, and {**y<sub>αβγ</sub>**} using the **least squares method**. These parameters can be determined based on the list {**E<sub>exp</sub>(n)**} (see the file `HFCO_exp.dat`), which contains the first **150 calculated vibrational levels** of the HFCO molecule.
 
-You are given a dataset `HFCO_exp.dat` with the first 150 vibrational levels of the HFCO molecule.
-
-##### Tasks:
-- Fit only the ωₐ and xₐᵦ terms first using:
+##### 🔧Tasks:
+- Fit Only ω<sub>α</sub> and x<sub>αβ</sub> and use a regular matrix inversion method to perform the least squares fit:
 
 ```python
 numpy.linalg.inv
 ```
 
-- Then include the yᵅᵦᵧ terms.
-⚠️ If a configuration like n1 = 1, n2 = 1, n3 = 1, n4 = n5 = n6 = 0 does not appear in the dataset, the coefficient y₁₂₃ cannot be determined.
+- Include y<sub>αβγ</sub> terms. Some of these parameters cannot be determined.
+if the state **(n₁ = 1, n₂ = 1, n₃ = 1, n₄ = n₅ = n₆ = 0)** does not appear in the list, then **y₁₂₃** cannot be fitted.
 
 - Test with **Singular Value Decomposition**:
 

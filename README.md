@@ -35,14 +35,14 @@ V(R) = -D \left\{1 + c_1(R - R^*) + c_2(R - R^*)^2 + c_3(R - R^*)^3 \right\} e^{
 ```
 
 Where:
-
+```math
 - \( D = 3.8886 \, \text{eV} \)
 - \( R^* = 2.2818 \, a_0 \)
 - \( \alpha = 3.3522498 \, a_0^{-1} \)
 - \( c_1 = 3.6445906 \, a_0^{-1} \)
 - \( c_2 = 3.9281238 \, a_0^{-2} \)
 - \( c_3 = 2.0986689 \, a_0^{-3} \)
-
+```
 This is a model adjusted to experimental spectroscopic data.
 
 We want to interpolate the potential over the interval \([1.8, 7]\, a_0\) using these points:
@@ -51,17 +51,17 @@ We want to interpolate the potential over the interval \([1.8, 7]\, a_0\) using 
 \{ R_q \} = \{1.8, 2.1, 2.4, 2.8, 3.3, 4.0, 5.0, 7.0\}
 ```
 ##### Interpolation Methods:
-1. Lagrange Polynomial \( L(R) \)
-2. Polynomial in powers of \( 1/R \)
-3. Rational Polynomial (RatInt.f)
-4. Cubic Splines (Spline.f)
+1. Lagrange Polynomial ( L(R) )
+2. Polynomial in powers of ( 1/R )
+3. Rational Polynomial (`RatInt.f`)
+4. Cubic Splines (`Spline.f`)
 
 Plot the interpolation error:
 
 ```math
 |V(R_i) - V_{\text{Int}}(R_i)|
 ```
-on a **logarithmic scale** for \( R \in [1.8, 10] \), and compare the behavior of the interpolation and extrapolation methods.
+on a **logarithmic scale** for R in [1.8, 10], and compare the behavior of the interpolation and extrapolation methods.
 
 ---
  
@@ -76,7 +76,7 @@ V(\phi) = e^{-\alpha \cos(6\phi)}, \quad \alpha = 0.2
 This potential has the same symmetry properties as the exact one.
 
 ##### Tasks:
-1. Build an interpolation scheme \( \bar{V}(\phi) \) using the method described in §1.III.3 (Minv.f).
+1. Build an interpolation scheme \( \bar{V}(\phi) \) using `Minv.f`.
 2. Determine the minimum number of interpolation points \( \{ \phi_q \} \) such that the standard deviation:
 
 ```math
@@ -117,7 +117,7 @@ Compare with the analytical value:
 ```
 ---
 
-#### Exercise 2: Numerical Derivatives of the V_{O_₂} Potential
+#### Exercise 2: Numerical Derivatives of the VO₂ Potential
 
 Reuse the O₂ potential from Project I and compute its first and second derivatives at:
 
@@ -142,11 +142,11 @@ A(t) = A_0 \sin(\omega t) e^{-\alpha(t - T)^2}
 ```
 
 Where:
-
+```math
 - \( \omega = 2 \)  
 - \( T = 5\pi \)  
 - \( \alpha = 0.05 \)
-
+```
 ##### Tasks:
 1. Compute the **fluence** \( \Phi \):
 
@@ -181,8 +181,8 @@ You are given a dataset `HFCO_exp.dat` with the first 150 vibrational levels of 
 numpy.linalg.inv
 ```
 
-2. Then include the \( y_{\alpha\beta\gamma} \) terms.  
-⚠️ If a configuration like \((n_1 = 1, n_2 = 1, n_3 = 1, n_4 = n_5 = n_6 = 0)\) does not appear in the dataset, the coefficient \( y_{123} \) cannot be determined.
+2. Then include the \( y_{\alpha\beta\gamma} \) terms.
+⚠️ If a configuration like (n1 = 1, n2 = 1, n3 = 1, n4 = n5 = n6 = 0) does not appear in the dataset, the coefficient \( y_{123} \) cannot be determined.
 
 3. Test with **Singular Value Decomposition**:
 
@@ -192,6 +192,4 @@ numpy.linalg.svd
 
 ##### Print:
 - The fitted parameters
-- The residuals \( E_{\text{exp}}(n) - E_{\text{sp}}(n) \) for all levels
-
-
+- The residuals E_exp(n) - E_sp(n)) for all levels

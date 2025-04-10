@@ -36,12 +36,12 @@ V(R) = -D \left\{1 + c_1(R - R^*) + c_2(R - R^*)^2 + c_3(R - R^*)^3 \right\} e^{
 
 Where:
 
-D = 3.8886 eV  
-R* = 2.2818 a₀
-α = 3.3522498 a₀⁻¹  
-c₁ = 3.6445906 a₀⁻¹  
-c₂ = 3.9281238 a₀⁻²  
-c₃ = 2.0986689 a₀⁻³
+- D = 3.8886 eV  
+- R* = 2.2818 a₀
+- α = 3.3522498 a₀⁻¹  
+- c₁ = 3.6445906 a₀⁻¹  
+- c₂ = 3.9281238 a₀⁻²  
+- c₃ = 2.0986689 a₀⁻³
 
 This is a model adjusted to experimental spectroscopic data.
 
@@ -51,10 +51,10 @@ We want to interpolate the potential over the interval [1.8, 7]a₀ using these 
 \{ R_q \} = \{1.8, 2.1, 2.4, 2.8, 3.3, 4.0, 5.0, 7.0\}
 ```
 ##### Interpolation Methods:
-1. Lagrange Polynomial ( L(R) )
-2. Polynomial in powers of ( 1/R )
-3. Rational Polynomial (`RatInt.f`)
-4. Cubic Splines (`Spline.f`)
+- Lagrange Polynomial ( L(R) )
+- Polynomial in powers of ( 1/R )
+- Rational Polynomial (`RatInt.f`)
+- Cubic Splines (`Spline.f`)
 
 Plot the interpolation error:
 
@@ -76,8 +76,8 @@ V(\phi) = e^{-\alpha \cos(6\phi)}, \quad \alpha = 0.2
 This potential has the same symmetry properties as the exact one.
 
 ##### Tasks:
-1. Build an interpolation scheme V̄(φ) using `Minv.f`.
-2. Determine the minimum number of interpolation points {φ_q} such that the standard deviation:
+- Build an interpolation scheme V̄(φ) using `Minv.f`.
+- Determine the minimum number of interpolation points {φ_q} such that the standard deviation:
 
 ```math
 \phi_{q+\frac{1}{2}} = \frac{1}{2}(\phi_{q+1} + \phi_q)
@@ -106,9 +106,9 @@ With:
 ```
 
 ##### Methods:
-1. Gauss-Laguerre Quadrature (`Laguerre_Quad.c`)  
-2. Monte Carlo Method (with same RNG seed)  
-3. (Optional) Monte Carlo with Importance Sampling
+- Gauss-Laguerre Quadrature (`Laguerre_Quad.c`)  
+- Monte Carlo Method (with same RNG seed)  
+- (Optional) Monte Carlo with Importance Sampling
 
 Compare with the analytical value:
 
@@ -148,7 +148,7 @@ Where:
 - α = 0.05
 
 ##### Tasks:
-1. Compute the **fluence** Φ:
+- Compute the **fluence** Φ:
 
 ```math
 \Phi = \int_0^{2T} A^2(t) dt
@@ -175,16 +175,16 @@ E_{\text{sp}}(n) = T_0 + \sum_{\alpha=1}^{6} \omega_\alpha \left(n_\alpha + \fra
 You are given a dataset `HFCO_exp.dat` with the first 150 vibrational levels of the HFCO molecule.
 
 ##### Tasks:
-1. Fit only the ωₐ and xₐᵦ terms first using:
+- Fit only the ωₐ and xₐᵦ terms first using:
 
 ```python
 numpy.linalg.inv
 ```
 
-2. Then include the yᵅᵦᵧ terms.
+- Then include the yᵅᵦᵧ terms.
 ⚠️ If a configuration like n1 = 1, n2 = 1, n3 = 1, n4 = n5 = n6 = 0 does not appear in the dataset, the coefficient y₁₂₃ cannot be determined.
 
-3. Test with **Singular Value Decomposition**:
+- Test with **Singular Value Decomposition**:
 
 ```python
 numpy.linalg.svd

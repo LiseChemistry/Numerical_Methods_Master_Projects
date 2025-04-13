@@ -283,8 +283,8 @@ program exercice_3
 
     end do
 
-    print*, 'Resultat trapeze'
-    print*, 'Nombre de points n : ', nb_point
+    print*, 'Results trapeze'
+    print*, 'Number of points n : ', nb_point
     print*, 'I(n+1) - I(n) : ' , iteration_difference
     print*, 'I(n) : ', integral_n
 
@@ -305,8 +305,8 @@ program exercice_3
 
     end do
 
-    print*, 'Resultat Simpson'
-    print*, 'Nombre de points n : ', nb_point
+    print*, 'Results Simpson'
+    print*, 'Number of points n : ', nb_point
     print*, 'I(n+2) - I(n) : ' , iteration_difference
     print*, 'I(n) : ', integral_n
 
@@ -331,7 +331,7 @@ program exercice_3
 
         x_space_step =  upper_bound / real(grid_size_print - 1 , 8)
 
-        print*, grid_size_analytic(j), 'points' , ', Resultat : ',  analytic_function%integrate()
+        print*, grid_size_analytic(j), 'points' , ', Results : ',  analytic_function%integrate()
 
         do i =1, grid_size_print
             x_grid_print(i) = x_space_step * real((i -1),8)
@@ -343,10 +343,10 @@ program exercice_3
         write(chaine_grid_size, '(I0)') grid_size_analytic(j)
 
         print_file  = "..\Results\analytic_function_" // trim(chaine_grid_size) // ".dat"
-        !call print_grid(print_file , x_grid_print, f_analytic_grid_print, grid_size_print)
+        call print_grid(print_file , x_grid_print, f_analytic_grid_print, grid_size_print)
 
         print_file  = "..\Results\integrand_" // trim(chaine_grid_size) // ".dat"
-        !call print_grid(print_file , x_grid_print, f_integrand_grid_print, grid_size_print)
+        call print_grid(print_file , x_grid_print, f_integrand_grid_print, grid_size_print)
 
         deallocate(x_grid)
         deallocate(f_grid)

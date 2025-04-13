@@ -1,6 +1,6 @@
 function potentiel(x)
    real*8 :: D, Rast, alpha, c1, c2, c3
-   integer, parameter :: n = 8 !Le nombre des points 
+   integer, parameter :: n = 8 !Number of points 
    real*8 :: potentiel
    real*8, intent (in) :: x
  
@@ -17,7 +17,7 @@ end function potentiel
 
 program potentiel_derivee_premiere
     implicit none
-    real*8 :: delta_x = 0.15d0 !La largeur de la grille
+    real*8 :: delta_x = 0.15d0 !Grid width
     real*8 :: f_derivee_1_d_1, f_derivee_1_d_2, f_derivee_1_d_3, f_derivee_1_d_4, f_derivee_1_d_5
     real*8 :: Rast = 2.2818d0
     real*8 :: potentiel
@@ -42,10 +42,10 @@ program potentiel_derivee_premiere
      - (5.0d0/504.0d0) * potentiel(Rast + 4.0d0 * delta_x) + (5.0d0/504.0d0) * potentiel(Rast - 4.0d0 * delta_x) &
      + (1.0d0/1260.0d0) * potentiel(Rast + 5.0d0*delta_x) - (1.0d0/1260.0d0) * potentiel(Rast - 5.0d0 * delta_x))* (1.0d0/delta_x)
     
-   print *, "La dérivée première (d_1) :", f_derivee_1_d_1
-   print *, "La dérivée première (d_2) :", f_derivee_1_d_2
-   print *, "La dérivée première (d_3) :", f_derivee_1_d_3
-   print *, "La dérivée première (d_4) :", f_derivee_1_d_4
-   print *, "La dérivée première (d_5) :", f_derivee_1_d_5
+   print *, "The first derivative (d_1) :", f_derivee_1_d_1
+   print *, "The first derivative (d_2) :", f_derivee_1_d_2
+   print *, "The first derivative (d_3) :", f_derivee_1_d_3
+   print *, "The first derivative (d_4) :", f_derivee_1_d_4
+   print *, "The first derivative (d_5) :", f_derivee_1_d_5
 
   end program potentiel_derivee_premiere

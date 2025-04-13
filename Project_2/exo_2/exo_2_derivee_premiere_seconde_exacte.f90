@@ -15,7 +15,7 @@ program potentiel_premiere_exacte
 
        f = -D*(1.0d0+c1*(x-Rast)+c2*(x-Rast)**2+c3*(x-Rast)**3)*exp(-alpha*(x-Rast))
 
-       dF1=-D*((c1+2*c2*(x-Rast)+3*c3*(x-Rast)**2)*DEXP(-alpha*(x-Rast)) & 
+      dF1=-D*((c1+2*c2*(x-Rast)+3*c3*(x-Rast)**2)*DEXP(-alpha*(x-Rast)) & 
        -alpha*(1+c1*(x-Rast)+c2*(x-Rast)**2+c3*(x-Rast)**3)*DEXP(-alpha*(x-Rast)))
 
       dF2 = -D*((2*c2 + 6*c3*(x-Rast))*DEXP(-alpha*(x-Rast)) &
@@ -25,4 +25,3 @@ program potentiel_premiere_exacte
   print *, dF1, dF2 
 
   end program potentiel_premiere_exacte
-

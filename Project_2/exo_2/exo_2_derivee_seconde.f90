@@ -1,6 +1,6 @@
 function potentiel(x)
     real*8 :: D, Rast, alpha, c1, c2, c3
-    integer, parameter :: n = 8 !Le nombre des points 
+    integer, parameter :: n = 8 !Number of points 
     real*8 :: potentiel
     real*8, intent (in) :: x
   
@@ -17,7 +17,7 @@ function potentiel(x)
  
  program potentiel_derivee_seconde
      implicit none
-     real*8 :: delta_x = 0.2d0 !La largeur de la grille à tester
+     real*8 :: delta_x = 0.2d0 !Grid width to test
      real*8 :: f_derivee_2_d_1, f_derivee_2_d_2, f_derivee_2_d_3, f_derivee_2_d_4, f_derivee_2_d_5
      real*8 :: Rast = 2.2818d0
      real*8 :: potentiel
@@ -48,11 +48,10 @@ function potentiel(x)
       + potentiel(Rast + 5.0d0*delta_x) * (1.0d0/3150.0d0) + (1.0d0/3150.0d0) &
       * potentiel(Rast - 5.0d0*delta_x))* (1.0d0/delta_x)**2
      
-    print *, "La dérivée seconde (d_1) :", f_derivee_2_d_1
-    print *, "La dérivée seconde (d_2) :", f_derivee_2_d_2
-    print *, "La dérivée seconde (d_3) :", f_derivee_2_d_3
-    print *, "La dérivée seconde (d_4) :", f_derivee_2_d_4
-    print *, "La dérivée seconde (d_5) :", f_derivee_2_d_5
+    print *, "The second derivative (d_1) :", f_derivee_2_d_1
+    print *, "The second derivative (d_2) :", f_derivee_2_d_2
+    print *, "The second derivative (d_3) :", f_derivee_2_d_3
+    print *, "The second derivative (d_4) :", f_derivee_2_d_4
+    print *, "The second derivative (d_5) :", f_derivee_2_d_5
  
    end program potentiel_derivee_seconde
-  

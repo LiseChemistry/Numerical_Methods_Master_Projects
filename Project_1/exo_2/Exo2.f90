@@ -1,11 +1,6 @@
-!######################################################################################################
-! type ModelPotentialCalculator
-! data members :
 ! alpha : parameter which describe model potential, see formula in the report
-! procedure members :
 ! initialize : it is called to set data member before doing a computation
 ! compute : return the potential value at phi
-!######################################################################################################
 
 module ModelPotentialCalculatorModule
     implicit none
@@ -30,14 +25,6 @@ contains
         compute = exp(- this%alpha * cos(6.0d0 * phi))
     end function
 end module ModelPotentialCalculatorModule
-
-!#############################################################################################################################################
-!GridPrinterModule
-!
-! procedure :
-! print_grid : print vector x, f in a file
-! print_grid_with_error : print vector x, f, error in a file
-!##############################################################################################################################################
 
 module GridPrinterModule
     implicit none
@@ -80,19 +67,8 @@ contains
 end module GridPrinterModule
 
 
-!####################################################################################
 ! type C2H5PotentialTrigonometricInterpolator
-! data members :
-! grid_size : number of points used
-! coefficient : coefficient of the cosinus basis functions
-!
-! procedure members :
-! build_phi_grid : it is used to build phi grid according to Gauss-Tch�bytcheff quadrature
-! initialize : it is called to set data member before doing an interpolation
-!####################################################################################
-!   ===+=========+=========+=========+=========+=========+=========+==
     Subroutine Minv(A,nA,dimA,L,Wk,tol)
-!     ===+=========+=========+=========+=========+=========+=========+==
 !     Matrix inversion and solution of linear systems
 !     A(dimA,1) : matrix to be inverted
 !     dimA : dimension declared in the calling sequence
@@ -101,12 +77,10 @@ end module GridPrinterModule
 !     Wk   :  "     "   "      "     " .On return, Wk(1) contains the
 !            determinant.
 !     Tol : tolerence on pivoting (to be set to 0d0 in the call)
-!     ===+=========+=========+=========+=========+=========+=========+==
       Implicit Real*8(a-h,o-z)
       Integer dimA
       Dimension A(*),L(*),Wk(*)
 !        search for largest element
-!
       d=1d0
       nk=-dima
       do 80 k=1,nA
@@ -124,9 +98,7 @@ end module GridPrinterModule
       l(k)=i
       l(nA+k)=j
    20 continue
-!
 !        interchange rows
-!
       j=l(k)
       if(j-k) 35,35,25
    25 ki=k-dima
@@ -136,9 +108,7 @@ end module GridPrinterModule
       ji=ki-k+j
       a(ki)=a(ji)
    30 a(ji) =hold
-!
 !        interchange columns
-!
    35 i=l(nA+k)
       if(i-k) 45,45,38
    38 jp=dima*(i-1)
@@ -148,10 +118,8 @@ end module GridPrinterModule
       hold=-a(jk)
       a(jk)=a(ji)
    40 a(ji) =hold
-!
 !        divide column by
 !        contained in biga)
-!
    45 if(abs(biga).le.tol) then
           wk(1)=0.
           return
@@ -161,9 +129,7 @@ end module GridPrinterModule
    50 ik=nk+i
       a(ik)=a(ik)/(-biga)
    55 continue
-!
 !        reduce matrix
-!
       do 65 i=1,nA
       ik=nk+i
       hold=a(ik)
@@ -175,23 +141,18 @@ end module GridPrinterModule
    62 kj=ij-i+k
       a(ij)=hold*a(kj)+a(ij)
    65 continue
-!
 !        divide row by pivot
-!
       kj=k-dima
       do 75 j=1,nA
       kj=kj+dima
       if(j-k) 70,75,70
    70 a(kj)=a(kj)/biga
    75 continue
-!
 !        product of pivots
       d=d*biga
-!
 !        replace pivot by reciprocal
       a(kk)=1.d0/biga
    80 continue
-!
 !        final row and column interchange
       k=nA
   100 k=(k-1)
@@ -216,10 +177,8 @@ end module GridPrinterModule
       a(ki)=-a(ji)
   130 a(ji) =hold
       go to 100
-!
   150 Wk(1)=d
       Return
-      
 end Subroutine
 
 module C2H5PotentialTrigonometricInterpolatorModule
@@ -320,14 +279,8 @@ program project_1_2
 
     call model_potential_calculator%initialize(alpha)
 
-    !################################################################################
-    !
     ! Find the minimum number of points that satisfies the criteria of the exercise
-    !
-    !################################################################################
-
     do while(stddev > threshold)
-
         grid_size = grid_size + 1
         phi_grid = build_phi_grid(grid_size)
         allocate(v_grid(grid_size))
@@ -372,13 +325,7 @@ program project_1_2
         print *, 'Standard deviation : ', stddev
     end do
 
-    !#####################################################
-    !
-    ! Print result in files
-    !
-    !#####################################################
     model_potential_file = "..\\Results\model_potential_2.dat"
-
     do i =1, grid_size_output
         x_grid(i) = x_grid_minimum + x_space_step * real((i -1),8)
         potential_f_grid(i) =  model_potential_calculator%compute(x_grid(i))
@@ -386,5 +333,3 @@ program project_1_2
     call print_grid(model_potential_file, x_grid, potential_f_grid, grid_size_output)
     call system ('gnuplot -p potentiel.plt')
 end program
-
-

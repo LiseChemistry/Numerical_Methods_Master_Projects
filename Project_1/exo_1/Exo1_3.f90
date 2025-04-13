@@ -1,12 +1,12 @@
       Subroutine ratint(xa,ya,n,x,y,dy)
-!     ============================================================
-!     xa : tableau des abcisses de la grille
-!     ya : valeurs correspondantes de la fonction
-!      n : nombre de points
-!      x : abcisse d'interpolation
-!      y : valeur interpolée en x
-!     dy : estimation de l'erreur d'interpolation
-!     ============================================================
+
+!     !     xa : array of x-values of the grid
+!     ya : corresponding function values
+!     n  : number of points
+!     x  : abscissa for interpolation
+!     y  : interpolated value at x
+!     dy : estimated interpolation error
+
       Implicit Real*8(a-h,o-z)
       PARAMETER (NMAX=50,TINY=1.d-25)
       Dimension xa(n),ya(n),c(NMAX),d(NMAX)
@@ -69,12 +69,12 @@ program Polynome_rationnel
     f(i)= -D*(1.0+c1*(R(i)-Rast)+c2*(R(i)-Rast)**2+c3*(R(i)-Rast)**3)*exp(-alpha*(R(i)-Rast))
   end do
 
-    ! Ouvrir le fichier txt pour sauvegarder les résultats
+    ! Open the file txt to save the results
   open(unit = 10, file = 'potentiel.dat', status = 'replace')
   do j = 1, 100 !nombre de points
      x = 0.1d0*j
     call ratint(R,f,n,x,y,dy)
-    write(10,*) x, y !dy : une estimation d'erreur
+    write(10,*) x, y !dy :  estimation of error
   end do
   close(10)
 

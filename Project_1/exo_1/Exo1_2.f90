@@ -18,7 +18,7 @@ program Polynome_en_puissances_de_1_divise_sur_R
     f(i)= -D*(1.0+c1*(R(i)-Rast)+c2*(R(i)-Rast)**2+c3*(R(i)-Rast)**3)*exp(-alpha*(R(i)-Rast))
   end do
 
-    ! Ouvrir le fichier txt pour sauvegarder les résultats
+    ! Open the file txt to save the results
   open(unit = 10, file = 'potentiel.dat', status = 'replace')
   do j = 1, n
     write(10,*) f(j), R(j)
@@ -26,7 +26,7 @@ program Polynome_en_puissances_de_1_divise_sur_R
   close(10)
 
 !INTERPOLATION
-  open(unit=11, file = 'mesresults.dat', status = 'replace')
+  open(unit=11, file = 'myresults.dat', status = 'replace')
   Rq = 0.1d0
   do while  (Rq<=10)
   resultat = 0 !initialisation

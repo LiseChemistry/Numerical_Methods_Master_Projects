@@ -192,3 +192,8 @@ numpy.linalg.svd
 ##### Print:
 - The fitted parameters
 - The residuals $E_{\text{exp}}(n) - E_{\text{sp}}(n)$ for all levels
+
+---
+
+### License
+The package is licensed under the MIT License.
